@@ -1,6 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.appcompat_version = '27.0.2'
+    ext.epoxy_version = '2.7.2'
     ext.kodein_version = '4.1.0'
     ext.kotlin_version = '1.2.41'
     ext.rxandroid_version = '2.0.1'

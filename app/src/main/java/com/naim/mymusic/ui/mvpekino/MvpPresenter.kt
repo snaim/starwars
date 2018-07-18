@@ -28,7 +28,7 @@ abstract class MvpPresenter<out N, V : BaseView<out BasePresenter>>(protected va
      * Method called by [MvpFragment.onResume] method
      * View initialization should be done in this method.
      */
-    fun resume() {
+    open fun resume() {
         //noop
     }
 
