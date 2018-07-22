@@ -3,6 +3,7 @@ package com.naim.mymusic.ui.musiclist
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.Toast
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
@@ -39,6 +40,10 @@ class MusicListFragment : MvpKodeinFragment<MusicListContract.Presenter>(), Musi
 
     override fun setData(data: Map<Int, List<MusicModel>>) {
         controller.setData(data)
+    }
+
+    override fun showError(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
     override fun provideOverridingModule() = Kodein.Module {

@@ -48,6 +48,11 @@ dependencies {
     implementation "com.github.salomonbrys.kodein:kodein:$kodein_version"
     implementation "com.github.salomonbrys.kodein:kodein-android:$kodein_version"
 
+    // Room
+    kapt "android.arch.persistence.room:compiler:$room_version"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    implementation "android.arch.persistence.room:rxjava2:$room_version"
+
     // Rx
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"

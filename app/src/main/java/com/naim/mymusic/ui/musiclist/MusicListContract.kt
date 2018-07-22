@@ -14,8 +14,8 @@ interface MusicListContract {
 
     interface View : BaseView<Presenter> {
         fun setData(data: Map<Int, List<MusicModel>>)
+        fun showError(message: String)
     }
 
-    interface Presenter : BasePresenter {
-    }
+    interface Presenter : BasePresenter
 }

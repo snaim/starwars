@@ -11,6 +11,8 @@ import com.github.salomonbrys.kodein.lazy
 import com.github.salomonbrys.kodein.provider
 import com.github.salomonbrys.kodein.scopedSingleton
 import com.github.salomonbrys.kodein.with
+import com.naim.mymusic.data.dataKodeinModule
+import com.naim.mymusic.domain.domainKodeinModule
 import com.naim.mymusic.ui.AppFragmentNavigator
 import com.naim.mymusic.ui.Navigator
 import com.naim.mymusic.ui.uiKodeinModule
@@ -25,6 +27,8 @@ class MyMusicApplication : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {
         import(uiKodeinModule)
+        import(domainKodeinModule)
+        import(dataKodeinModule)
 
         /* Container View ID is injected using Kodein Constants [https://salomonbrys.github.io/Kodein/#_constant_binding]
         * AppFragmentNavigator is bound to the Activity scope because it needs to be rebuilt every time the Activity is recreated,
