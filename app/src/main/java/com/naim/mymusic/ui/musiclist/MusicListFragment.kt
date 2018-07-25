@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
+import com.naim.mymusic.MainActivity
 import com.naim.mymusic.R
 import com.naim.mymusic.ui.model.MusicModel
 import com.naim.mymusic.ui.mvpekino.MvpKodeinFragment
@@ -44,6 +45,10 @@ class MusicListFragment : MvpKodeinFragment<MusicListContract.Presenter>(), Musi
 
     override fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun setLoadingState(isLoading: Boolean){
+        (activity as MainActivity).setLoadingState(isLoading)
     }
 
     override fun provideOverridingModule() = Kodein.Module {

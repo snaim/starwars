@@ -10,8 +10,8 @@ import com.naim.mymusic.data.network.buildMusicApi
 import com.naim.mymusic.data.network.buildMusicHttpClient
 import com.naim.mymusic.data.network.buildMusicRetrofit
 import com.naim.mymusic.data.room.Database
-import com.naim.mymusic.data.room.MyDatabase
-import com.naim.mymusic.data.room.MyDatabaseImpl
+import com.naim.mymusic.data.room.MusicDatabase
+import com.naim.mymusic.data.room.MusicDatabaseImpl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
@@ -28,7 +28,7 @@ val dataKodeinModule = Kodein.Module {
                 Database.DATABASE_NAME)
                 .build()
     }
-    bind<MyDatabase>() with singleton { MyDatabaseImpl(instance()) }
+    bind<MusicDatabase>() with singleton { MusicDatabaseImpl(instance()) }
 
     // Network
     bind<OkHttpClient>() with singleton { buildMusicHttpClient() }

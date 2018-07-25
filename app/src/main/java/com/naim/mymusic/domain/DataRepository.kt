@@ -12,4 +12,6 @@ import io.reactivex.Observable
 interface DataRepository {
 
     fun getMusic(): Observable<List<MusicRoom>>
+
+    fun saveMusic(list: List<MusicRoom>)
 }

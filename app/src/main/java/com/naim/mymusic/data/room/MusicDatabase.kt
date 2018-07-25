@@ -4,12 +4,14 @@ import com.naim.mymusic.data.room.model.MusicRoom
 import io.reactivex.Flowable
 
 /**
- * MyDatabase -
+ * MusicDatabase -
  *
  * @author naim
  * @version $Id$
  */
-interface MyDatabase {
+interface MusicDatabase {
 
     fun getAll(): Flowable<List<MusicRoom>>
+
+    fun insertAll(list : List<MusicRoom>)
 }

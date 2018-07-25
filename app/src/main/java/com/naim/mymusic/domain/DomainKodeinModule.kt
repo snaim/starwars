@@ -8,6 +8,8 @@ import com.github.salomonbrys.kodein.singleton
 import com.naim.mymusic.data.DataRepositoryImpl
 import com.naim.mymusic.domain.converter.MusicRoomToMusicModelConverter
 import com.naim.mymusic.domain.converter.MusicToAlbumTrackConverter
+import com.naim.mymusic.domain.interactor.GetMusicUseCase
+import com.naim.mymusic.domain.interactor.RefreshDataFromNetworkUseCase
 
 /**
  * DomainKodeinModule -
@@ -16,10 +18,12 @@ import com.naim.mymusic.domain.converter.MusicToAlbumTrackConverter
  * @version $Id$
  */
 val domainKodeinModule = Kodein.Module {
-    bind<DataRepository>() with singleton { DataRepositoryImpl(instance(), instance()) }
+    bind<DataRepository>() with singleton { DataRepositoryImpl(instance()) }
 
     bind<MusicRoomToMusicModelConverter>() with provider { MusicRoomToMusicModelConverter() }
     bind<MusicToAlbumTrackConverter>() with provider { MusicToAlbumTrackConverter() }
 
     bind<GetMusicUseCase>() with provider { GetMusicUseCase(instance(), instance(), instance()) }
+    bind<RefreshDataFromNetworkUseCase>() with
+            provider { RefreshDataFromNetworkUseCase(instance(), instance()) }
 }

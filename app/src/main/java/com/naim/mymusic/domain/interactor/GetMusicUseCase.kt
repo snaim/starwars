@@ -1,5 +1,6 @@
-package com.naim.mymusic.domain
+package com.naim.mymusic.domain.interactor
 
+import com.naim.mymusic.domain.DataRepository
 import com.naim.mymusic.domain.converter.MusicRoomToMusicModelConverter
 import com.naim.mymusic.domain.converter.MusicToAlbumTrackConverter
 import com.naim.mymusic.ui.model.MusicModel
