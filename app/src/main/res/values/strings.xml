@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">myMusic</string>
     <string name="thumbnail">thumbnail</string>
+
+    <string name="base_url" translatable="false">http://jsonplaceholder.typicode.com/</string>
+
 </resources>

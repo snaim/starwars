@@ -16,10 +16,10 @@ import com.naim.mymusic.domain.converter.MusicToAlbumTrackConverter
  * @version $Id$
  */
 val domainKodeinModule = Kodein.Module {
-    bind<DataRepository>() with singleton { DataRepositoryImpl() }
-
-    bind<GetMusicUseCase>() with provider { GetMusicUseCase(instance(), instance(), instance()) }
+    bind<DataRepository>() with singleton { DataRepositoryImpl(instance(), instance()) }
 
     bind<MusicRoomToMusicModelConverter>() with provider { MusicRoomToMusicModelConverter() }
     bind<MusicToAlbumTrackConverter>() with provider { MusicToAlbumTrackConverter() }
+
+    bind<GetMusicUseCase>() with provider { GetMusicUseCase(instance(), instance(), instance()) }
 }

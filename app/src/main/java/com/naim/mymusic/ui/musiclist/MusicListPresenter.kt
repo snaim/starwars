@@ -4,6 +4,8 @@ import android.util.Log
 import com.naim.mymusic.domain.GetMusicUseCase
 import com.naim.mymusic.ui.Navigator
 import com.naim.mymusic.ui.mvpekino.MvpPresenter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * MusicListPresenter -
@@ -27,11 +29,13 @@ class MusicListPresenter(view: MusicListContract.View, navigator: Navigator,
 
     private fun initList() {
         val disposable = getMusicUseCase.execute()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     view.setData(it)
                 }, {
                     Log.e(TAG, it.message)
-                    view.showError("An error occured while loading your music")
+                    view.showError("An error occured while loading your music") // TODO : string
                 })
 
         addToAutoDisposeList(disposable)
