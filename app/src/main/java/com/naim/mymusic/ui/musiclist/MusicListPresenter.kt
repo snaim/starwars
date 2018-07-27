@@ -2,6 +2,7 @@ package com.naim.mymusic.ui.musiclist
 
 import android.util.Log
 import com.naim.mymusic.domain.interactor.GetMusicUseCase
+import com.naim.mymusic.domain.interactor.RefreshDataFromNetworkUseCase
 import com.naim.mymusic.ui.Navigator
 import com.naim.mymusic.ui.mvpekino.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,7 +15,8 @@ import io.reactivex.schedulers.Schedulers
  * @version $Id$
  */
 class MusicListPresenter(view: MusicListContract.View, navigator: Navigator,
-        private val getMusicUseCase: GetMusicUseCase)
+        private val getMusicUseCase: GetMusicUseCase,
+        private val refreshDataFromNetworkUseCase: RefreshDataFromNetworkUseCase)
     : MvpPresenter<Navigator, MusicListContract.View>(view, navigator),
         MusicListContract.Presenter {
 
@@ -25,6 +27,10 @@ class MusicListPresenter(view: MusicListContract.View, navigator: Navigator,
     override fun resume() {
         super.resume()
         initList()
+    }
+
+    override fun onRefresh() {
+        getDataFromNetwork()
     }
 
     private fun initList() {
@@ -42,5 +48,12 @@ class MusicListPresenter(view: MusicListContract.View, navigator: Navigator,
                 })
 
         addToAutoDisposeList(disposable)
+    }
+
+    private fun getDataFromNetwork() {
+        refreshDataFromNetworkUseCase.execute()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
     }
 }

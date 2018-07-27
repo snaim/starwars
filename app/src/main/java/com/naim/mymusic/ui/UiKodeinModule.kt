@@ -15,6 +15,6 @@ import com.naim.mymusic.ui.musiclist.MusicListPresenter
  */
 val uiKodeinModule = Kodein.Module {
     bind<MusicListContract.Presenter>() with
-            provider { MusicListPresenter(instance(), instance(), instance()) }
+            provider { MusicListPresenter(instance(), instance(), instance(), instance()) }
 }
 

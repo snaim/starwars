@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), AppCompatActivityInjector {
             setLoadingState(true)
             refreshDataFromNetworkUseCaseDisposable = refreshDataFromNetworkUseCase.execute()
                     .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread()) // TODO
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
                         setLoadingState(false)
                         isInitialized = true

@@ -1,6 +1,7 @@
 package com.naim.mymusic.domain.interactor
 
 import com.naim.mymusic.data.network.MusicAPI
+import com.naim.mymusic.data.room.model.MusicRoom
 import com.naim.mymusic.domain.DataRepository
 import io.reactivex.Completable
 
@@ -15,8 +16,12 @@ class RefreshDataFromNetworkUseCase(private val dataRepository: DataRepository,
 
     fun execute(): Completable =
             Completable.fromAction {
-                musicAPI.load().subscribe {
-                    dataRepository.saveMusic(it)
-                }
+                musicAPI.load()
+                        .onErrorReturn {
+                            return@onErrorReturn listOf<MusicRoom>()
+                        }
+                        .subscribe {
+                            dataRepository.saveMusic(it)
+                        }
             }
 }

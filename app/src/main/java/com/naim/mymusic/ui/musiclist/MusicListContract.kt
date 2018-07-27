@@ -18,5 +18,7 @@ interface MusicListContract {
         fun setLoadingState(isLoading: Boolean)
     }
 
-    interface Presenter : BasePresenter
+    interface Presenter : BasePresenter {
+        fun onRefresh()
+    }
 }
