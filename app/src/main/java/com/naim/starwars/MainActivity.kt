@@ -8,7 +8,6 @@ import com.github.salomonbrys.kodein.KodeinInjector
 import com.github.salomonbrys.kodein.android.AppCompatActivityInjector
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.with
-import com.naim.starwars.domain.interactor.RefreshDataFromNetworkUseCase
 import com.naim.starwars.ui.AppFragmentNavigator
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

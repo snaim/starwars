@@ -27,12 +27,12 @@ fun buildMusicHttpClient(): OkHttpClient {
 fun buildMusicRetrofit(httpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
             .client(httpClient)
-            .baseUrl("http://jsonplaceholder.typicode.com") // TODO : getstring
+            .baseUrl("https://starwars.chauffeur-prive.com")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 }
 
-fun buildMusicApi(retrofit: Retrofit): MusicAPI {
-    return retrofit.create(MusicAPI::class.java)
+fun buildMusicApi(retrofit: Retrofit): StarwarsAPI {
+    return retrofit.create(StarwarsAPI::class.java)
 }

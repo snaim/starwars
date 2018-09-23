@@ -1,7 +1,8 @@
 package com.naim.starwars.domain
 
-import com.naim.starwars.data.room.model.MusicRoom
+import com.naim.starwars.data.model.TripModel
 import io.reactivex.Observable
+import io.reactivex.Single
 
 /**
  * DataRepository -
@@ -11,7 +12,7 @@ import io.reactivex.Observable
  */
 interface DataRepository {
 
-    fun getMusic(): Observable<List<MusicRoom>>
+    fun getTripList(): Observable<List<TripModel>>
 
-    fun saveMusic(list: List<MusicRoom>)
+    fun getATrip(id: Int): Single<TripModel>
 }

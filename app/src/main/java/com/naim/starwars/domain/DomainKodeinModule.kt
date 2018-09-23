@@ -9,7 +9,6 @@ import com.naim.starwars.data.DataRepositoryImpl
 import com.naim.starwars.domain.converter.MusicRoomToMusicModelConverter
 import com.naim.starwars.domain.converter.MusicToAlbumTrackConverter
 import com.naim.starwars.domain.interactor.GetMusicUseCase
-import com.naim.starwars.domain.interactor.RefreshDataFromNetworkUseCase
 
 /**
  * DomainKodeinModule -
@@ -24,6 +23,4 @@ val domainKodeinModule = Kodein.Module {
     bind<MusicToAlbumTrackConverter>() with provider { MusicToAlbumTrackConverter() }
 
     bind<GetMusicUseCase>() with provider { GetMusicUseCase(instance(), instance(), instance()) }
-    bind<RefreshDataFromNetworkUseCase>() with
-            provider { RefreshDataFromNetworkUseCase(instance(), instance()) }
 }

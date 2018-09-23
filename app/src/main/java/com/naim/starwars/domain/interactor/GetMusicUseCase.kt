@@ -17,7 +17,7 @@ class GetMusicUseCase(private val dataRepository: DataRepository,
         private val musicToAlbumTrackConverter: MusicToAlbumTrackConverter) {
 
     fun execute(): Observable<Map<Int, List<MusicModel>>> =
-            dataRepository.getMusic()
+            dataRepository.getTripList()
                     .map { musicRoomToMusicModelConverter.convert(it) }
                     .map { musicToAlbumTrackConverter.convert(it) }
 }

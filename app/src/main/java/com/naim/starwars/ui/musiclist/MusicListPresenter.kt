@@ -2,7 +2,6 @@ package com.naim.starwars.ui.musiclist
 
 import android.util.Log
 import com.naim.starwars.domain.interactor.GetMusicUseCase
-import com.naim.starwars.domain.interactor.RefreshDataFromNetworkUseCase
 import com.naim.starwars.ui.Navigator
 import com.naim.starwars.ui.mvpekino.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers

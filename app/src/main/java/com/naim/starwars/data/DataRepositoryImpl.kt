@@ -1,9 +1,10 @@
 package com.naim.starwars.data
 
-import com.naim.starwars.data.room.MusicDatabase
-import com.naim.starwars.data.room.model.MusicRoom
+import com.naim.starwars.data.model.TripModel
+import com.naim.starwars.data.network.StarwarsAPI
 import com.naim.starwars.domain.DataRepository
 import io.reactivex.Observable
+import io.reactivex.Single
 
 /**
  * DataRepositoryImpl -
@@ -11,9 +12,11 @@ import io.reactivex.Observable
  * @author naim
  * @version $Id$
  */
-class DataRepositoryImpl(private val musicDatabase: MusicDatabase) : DataRepository {
+class DataRepositoryImpl(private val starwarsAPI: StarwarsAPI) : DataRepository {
 
-    override fun getMusic(): Observable<List<MusicRoom>> = musicDatabase.getAll().toObservable()
+    override fun getTripList(): Observable<List<TripModel>> = starwarsAPI.getTripList()
 
-    override fun saveMusic(list: List<MusicRoom>) = musicDatabase.insertAll(list)
+    override fun getATrip(id: Int): Single<TripModel> = starwarsAPI.getATrip(id)
+
+
 }
