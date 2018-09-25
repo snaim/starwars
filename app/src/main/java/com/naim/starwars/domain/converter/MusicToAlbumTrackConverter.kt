@@ -1,6 +1,6 @@
 package com.naim.starwars.domain.converter
 
-import com.naim.starwars.ui.model.MusicModel
+import com.naim.starwars.ui.model.UITripListItemModel
 
 /**
  * MusicToAlbumTrackConverter -
@@ -10,5 +10,5 @@ import com.naim.starwars.ui.model.MusicModel
  */
 class MusicToAlbumTrackConverter {
 
-    fun convert(list: List<MusicModel>): Map<Int, List<MusicModel>> = list.groupBy { it.albumId }
+    fun convert(list: List<UITripListItemModel>): Map<Int, List<UITripListItemModel>> = list.groupBy { it.id }
 }

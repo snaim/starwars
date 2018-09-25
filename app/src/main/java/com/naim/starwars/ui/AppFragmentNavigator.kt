@@ -2,7 +2,7 @@ package com.naim.starwars.ui
 
 import android.content.Context
 import android.support.v4.app.FragmentManager
-import com.naim.starwars.ui.musiclist.MusicListFragment
+import com.naim.starwars.ui.triplist.TripListFragment
 import com.naim.starwars.ui.mvpekino.FragmentNavigator
 
 /**
@@ -14,13 +14,13 @@ import com.naim.starwars.ui.mvpekino.FragmentNavigator
 class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, containerViewId: Int)
     : FragmentNavigator(context, fragmentManager, containerViewId), Navigator {
 
-    override val TAG = "my-music.navigator"
+    override val TAG = "starwars.navigator"
 
     override fun displayOrRestoreScreenOnActivityCreate(isAppInitialized: Boolean) {
         displayMusicList()
     }
 
     override fun displayMusicList() {
-        displayAndSetRootFragment(MusicListFragment.newInstance())
+        displayAndSetRootFragment(TripListFragment.newInstance())
     }
 }

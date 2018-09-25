@@ -5,9 +5,9 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.singleton
 import com.naim.starwars.data.network.StarwarsAPI
-import com.naim.starwars.data.network.buildMusicApi
-import com.naim.starwars.data.network.buildMusicHttpClient
-import com.naim.starwars.data.network.buildMusicRetrofit
+import com.naim.starwars.data.network.buildStarwarsApi
+import com.naim.starwars.data.network.buildStarwarsHttpClient
+import com.naim.starwars.data.network.buildStarwarsRetrofit
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
@@ -19,9 +19,9 @@ import retrofit2.Retrofit
  */
 val dataKodeinModule = Kodein.Module {
 
-    bind<OkHttpClient>() with singleton { buildMusicHttpClient() }
+    bind<OkHttpClient>() with singleton { buildStarwarsHttpClient() }
 
-    bind<Retrofit>() with singleton { buildMusicRetrofit(instance()) }
+    bind<Retrofit>() with singleton { buildStarwarsRetrofit(instance()) }
 
-    bind<StarwarsAPI>() with singleton { buildMusicApi(instance()) }
+    bind<StarwarsAPI>() with singleton { buildStarwarsApi(instance()) }
 }

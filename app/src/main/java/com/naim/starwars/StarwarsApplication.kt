@@ -18,12 +18,12 @@ import com.naim.starwars.ui.Navigator
 import com.naim.starwars.ui.uiKodeinModule
 
 /**
- * MyMusicApplication -
+ * StarwarsApplication -
  *
  * @author naim
  * @version $Id$
  */
-class MyMusicApplication : Application(), KodeinAware {
+class StarwarsApplication : Application(), KodeinAware {
 
     override val kodein by Kodein.lazy {
         import(uiKodeinModule)

@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * @author naim
  * @version $Id$
  */
-fun buildMusicHttpClient(): OkHttpClient {
+fun buildStarwarsHttpClient(): OkHttpClient {
     return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = if (BuildConfig.DEBUG)
@@ -24,7 +24,7 @@ fun buildMusicHttpClient(): OkHttpClient {
             .build()
 }
 
-fun buildMusicRetrofit(httpClient: OkHttpClient): Retrofit {
+fun buildStarwarsRetrofit(httpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
             .client(httpClient)
             .baseUrl("https://starwars.chauffeur-prive.com")
@@ -33,6 +33,6 @@ fun buildMusicRetrofit(httpClient: OkHttpClient): Retrofit {
             .build()
 }
 
-fun buildMusicApi(retrofit: Retrofit): StarwarsAPI {
+fun buildStarwarsApi(retrofit: Retrofit): StarwarsAPI {
     return retrofit.create(StarwarsAPI::class.java)
 }

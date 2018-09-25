@@ -1,24 +1,22 @@
-package com.naim.starwars.ui.musiclist
+package com.naim.starwars.ui.triplist
 
-import com.naim.starwars.ui.model.MusicModel
+import com.naim.starwars.ui.model.UITripListItemModel
 import com.naim.starwars.ui.mvpekino.BasePresenter
 import com.naim.starwars.ui.mvpekino.BaseView
 
 /**
- * MusicListContract -
+ * TripListContract -
  *
  * @author naim
  * @version $Id$
  */
-interface MusicListContract {
+interface TripListContract {
 
     interface View : BaseView<Presenter> {
-        fun setData(data: Map<Int, List<MusicModel>>)
+        fun setData(data: List<UITripListItemModel>)
         fun showError(message: String)
         fun setLoadingState(isLoading: Boolean)
     }
 
-    interface Presenter : BasePresenter {
-        fun onRefresh()
-    }
+    interface Presenter : BasePresenter
 }

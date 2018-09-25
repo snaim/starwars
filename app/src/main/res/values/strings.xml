@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">myMusic</string>
+    <string name="app_name">Starwars</string>
     <string name="thumbnail">thumbnail</string>
     <string name="empty_state">There is no data, sorry, try to refresh !</string>
 
-    <string name="base_url" translatable="false">http://jsonplaceholder.typicode.com/</string>
-
+    <string name="base_url" translatable="false">https://starwars.chauffeur-prive.com/</string>
 </resources>

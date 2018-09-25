@@ -1,7 +1,7 @@
 package com.naim.starwars.domain.converter
 
-import com.naim.starwars.data.room.model.MusicRoom
-import com.naim.starwars.ui.model.MusicModel
+import com.naim.starwars.data.model.TripModel
+import com.naim.starwars.ui.model.UITripListItemModel
 
 /**
  * MusicRoomToMusicModelConverter -
@@ -11,16 +11,12 @@ import com.naim.starwars.ui.model.MusicModel
  */
 class MusicRoomToMusicModelConverter {
 
-    fun convert(listMusicRoom: List<MusicRoom>): List<MusicModel> {
-        val musicModelList = mutableListOf<MusicModel>()
-        listMusicRoom.forEach {
-            musicModelList.add( MusicModel(
-                    id = it.id,
-                    albumId = it.albumId,
-                    title = it.title,
-                    url = it.url,
-                    thumbnailUrl = it.thumbnailUrl))
-        }
+    fun convert(listMusicRoom: List<TripModel>): List<UITripListItemModel> {
+        val musicModelList = mutableListOf<UITripListItemModel>()
+       /* listMusicRoom.forEach {
+            musicModelList.add( UITripListItemModel(
+                    id = it.id))
+        }*/
         return musicModelList
     }
 }
