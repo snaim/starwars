@@ -12,7 +12,8 @@ import com.naim.starwars.R
 import com.naim.starwars.ui.model.UITripListItemModel
 import com.naim.starwars.ui.mvpekino.MvpKodeinFragment
 import kotlinx.android.synthetic.main.fragment_trip_list.empty_state
-import kotlinx.android.synthetic.main.fragment_trip_list.rv_music
+import kotlinx.android.synthetic.main.fragment_trip_list.swipe_refresh
+import kotlinx.android.synthetic.main.fragment_trip_list.trip_list
 
 /**
  * TripListFragment -
@@ -36,8 +37,14 @@ class TripListFragment : MvpKodeinFragment<TripListContract.Presenter>(), TripLi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rv_music.adapter = controller.adapter
-        rv_music.layoutManager = LinearLayoutManager(context)
+
+        trip_list.adapter = controller.adapter
+        trip_list.layoutManager = LinearLayoutManager(context)
+
+        swipe_refresh.setOnRefreshListener {
+            presenter.onRefresh()
+            swipe_refresh.isRefreshing = false
+        }
     }
 
     override fun setData(data: List<UITripListItemModel>) {
@@ -60,7 +67,7 @@ class TripListFragment : MvpKodeinFragment<TripListContract.Presenter>(), TripLi
     }
 
     private fun setEmptyState(isVisible: Boolean) {
-        rv_music.visibility = if (isVisible) View.GONE else View.VISIBLE
+        trip_list.visibility = if (isVisible) View.GONE else View.VISIBLE
         empty_state.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 }
