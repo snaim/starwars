@@ -5,8 +5,10 @@ import com.airbnb.epoxy.EpoxyModel
 import com.bumptech.glide.Glide
 import com.naim.starwars.R
 import com.naim.starwars.ui.model.UITripListItemModel
-import kotlinx.android.synthetic.main.ui_trip_item.view.music_thumbnail
-import kotlinx.android.synthetic.main.ui_trip_item.view.title
+import kotlinx.android.synthetic.main.ui_trip_item.view.dropoff
+import kotlinx.android.synthetic.main.ui_trip_item.view.pickup
+import kotlinx.android.synthetic.main.ui_trip_item.view.pilot
+import kotlinx.android.synthetic.main.ui_trip_item.view.pilot_avatar
 
 /**
  * ItemPhoneModel -
@@ -21,10 +23,14 @@ class ItemTripModel(private val UITripListItem: UITripListItemModel) : EpoxyMode
     }
 
     override fun bind(view: CardView) {
-       view.title.text = UITripListItem.pilotName
+        view.pilot.text = UITripListItem.pilotName
 
-         Glide.with(view.context)
-                .load("https://starwars.chauffeur-prive.com" + UITripListItem.pilotAvatar)
-                .into(view.music_thumbnail)
+        view.pickup.text = UITripListItem.pickupName
+        view.dropoff.text = UITripListItem.dropoffName
+
+        Glide.with(view.context)
+                // TODO
+                .load(view.context.resources.getString(R.string.base_url) + UITripListItem.pilotAvatar)
+                .into(view.pilot_avatar)
     }
 }

@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Starwars</string>
-    <string name="thumbnail">thumbnail</string>
-    <string name="empty_state">There is no data, sorry, try to refresh !</string>
 
-    <string name="base_url" translatable="false">https://starwars.chauffeur-prive.com/</string>
+    <string name="base_url" translatable="false">https://starwars.chauffeur-prive.com</string>
+
+    <string name="pilot_avatar">Pilot avatar</string>
+    <string name="empty_state">There is no trip, sorry, try to refresh !</string>
+    <string name="arrow">arrow</string>
 </resources>
