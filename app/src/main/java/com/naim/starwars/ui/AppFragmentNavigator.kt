@@ -25,8 +25,8 @@ class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, c
         displayAndSetRootFragment(TripListFragment.newInstance())
     }
 
-    override fun displayTripDetail() {
-        displayAndSetRootFragment(TripDetailFragment.newInstance())
+    override fun displayTripDetail(id: Int) {
+        addToBackStackWithSlideAnimation(TripDetailFragment.newInstance(id))
     }
 
 }

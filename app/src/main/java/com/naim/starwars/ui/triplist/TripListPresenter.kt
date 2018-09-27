@@ -46,4 +46,9 @@ class TripListPresenter(view: TripListContract.View, navigator: Navigator,
     override fun onRefresh() {
         loadList()
     }
+
+    override fun onClickOnPhone(id: Int) {
+        navigator.displayTripDetail(id)
+    }
+
 }

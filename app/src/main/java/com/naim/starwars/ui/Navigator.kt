@@ -8,5 +8,5 @@ package com.naim.starwars.ui
  */
 interface Navigator {
     fun displayTripList()
-    fun displayTripDetail()
+    fun displayTripDetail(id: Int)
 }

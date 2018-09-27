@@ -1,7 +1,7 @@
 package com.naim.starwars.ui.triplist
 
 import com.airbnb.epoxy.TypedEpoxyController
-import com.naim.starwars.ui.model.UITripListItemModel
+import com.naim.starwars.ui.model.ViewTripListItemModel
 
 /**
  * TripEpoxyController -
@@ -10,12 +10,13 @@ import com.naim.starwars.ui.model.UITripListItemModel
  * @version $Id$
  */
 
-class TripEpoxyController : TypedEpoxyController<List<UITripListItemModel>>() {
+class TripEpoxyController(private val listener: ItemTripModel.OnClickListener)
+    : TypedEpoxyController<List<ViewTripListItemModel>>() {
 
-    override fun buildModels(tripListItems: List<UITripListItemModel>) {
+    override fun buildModels(tripListItems: List<ViewTripListItemModel>) {
 
         tripListItems.forEach {
-            ItemTripModel(it)
+            ItemTripModel(it, listener)
                     .id(it.hashCode())
                     .addTo(this)
         }

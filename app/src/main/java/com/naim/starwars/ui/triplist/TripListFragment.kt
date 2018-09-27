@@ -9,7 +9,7 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.naim.starwars.MainActivity
 import com.naim.starwars.R
-import com.naim.starwars.ui.model.UITripListItemModel
+import com.naim.starwars.ui.model.ViewTripListItemModel
 import com.naim.starwars.ui.mvpekino.MvpKodeinFragment
 import kotlinx.android.synthetic.main.fragment_trip_list.empty_state
 import kotlinx.android.synthetic.main.fragment_trip_list.swipe_refresh
@@ -21,13 +21,15 @@ import kotlinx.android.synthetic.main.fragment_trip_list.trip_list
  * @author naim
  * @version $Id$
  */
-class TripListFragment : MvpKodeinFragment<TripListContract.Presenter>(), TripListContract.View {
+class TripListFragment
+    : MvpKodeinFragment<TripListContract.Presenter>(), TripListContract.View,
+        ItemTripModel.OnClickListener {
 
     override val defaultLayout: Int = R.layout.fragment_trip_list
 
     override val presenter: TripListContract.Presenter by injector.instance()
 
-    private val controller = TripEpoxyController()
+    private val controller = TripEpoxyController(this)
 
     companion object {
         fun newInstance(): TripListFragment {
@@ -47,7 +49,7 @@ class TripListFragment : MvpKodeinFragment<TripListContract.Presenter>(), TripLi
         }
     }
 
-    override fun setData(data: List<UITripListItemModel>) {
+    override fun setData(data: List<ViewTripListItemModel>) {
         setEmptyState(data.isEmpty())
         if (!data.isEmpty()) {
             controller.setData(data)
@@ -62,12 +64,17 @@ class TripListFragment : MvpKodeinFragment<TripListContract.Presenter>(), TripLi
         (activity as MainActivity).setLoadingState(isLoading)
     }
 
-    override fun provideOverridingModule() = Kodein.Module {
-        bind<TripListContract.View>() with instance(this@TripListFragment)
-    }
-
     private fun setEmptyState(isVisible: Boolean) {
         trip_list.visibility = if (isVisible) View.GONE else View.VISIBLE
         empty_state.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
+
+    override fun onClick(id: Int) {
+        presenter.onClickOnPhone(id)
+    }
+
+    override fun provideOverridingModule() = Kodein.Module {
+        bind<TripListContract.View>() with instance(this@TripListFragment)
+    }
+
 }

@@ -6,7 +6,9 @@ import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.github.salomonbrys.kodein.singleton
 import com.naim.starwars.data.DataRepositoryImpl
-import com.naim.starwars.domain.converter.TripNetworkToUiTripConverter
+import com.naim.starwars.domain.converter.TripNetworkItemToUiTripItemConverter
+import com.naim.starwars.domain.converter.TripNetworkListToUiTripListConverter
+import com.naim.starwars.domain.interactor.GetATripUseCase
 import com.naim.starwars.domain.interactor.GetTripListUseCase
 
 /**
@@ -19,7 +21,9 @@ val domainKodeinModule = Kodein.Module {
 
     bind<DataRepository>() with singleton { DataRepositoryImpl(instance()) }
 
-    bind<TripNetworkToUiTripConverter>() with provider { TripNetworkToUiTripConverter() }
+    bind<TripNetworkListToUiTripListConverter>() with provider { TripNetworkListToUiTripListConverter() }
+    bind<TripNetworkItemToUiTripItemConverter>() with provider { TripNetworkItemToUiTripItemConverter() }
 
     bind<GetTripListUseCase>() with provider { GetTripListUseCase(instance(), instance()) }
+    bind<GetATripUseCase>() with provider { GetATripUseCase(instance(), instance()) }
 }

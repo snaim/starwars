@@ -6,6 +6,7 @@ package com.naim.starwars.ui.mvpekino
 import android.content.Context
 import android.support.v4.app.FragmentManager
 import android.util.Log
+import com.naim.starwars.R
 
 /**
  * FragmentNavigator -
@@ -110,6 +111,18 @@ abstract class FragmentNavigator(protected val context: Context,
         fragmentManager
                 .beginTransaction()
                 .replace(containerViewId, fragment, fragment.fragmentTag)
+                .commit()
+    }
+
+    protected fun addToBackStackWithSlideAnimation(newFragment: AbstractMvpFragment<*>) {
+        fragmentManager
+                .beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right,
+                        R.anim.exit_to_left,
+                        R.anim.enter_from_left,
+                        R.anim.exit_to_right)
+                .replace(containerViewId, newFragment, newFragment.fragmentTag)
+                .addToBackStack(newFragment.fragmentTag)
                 .commit()
     }
 }

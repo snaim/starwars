@@ -1,8 +1,8 @@
 package com.naim.starwars.domain.interactor
 
 import com.naim.starwars.domain.DataRepository
-import com.naim.starwars.domain.converter.TripNetworkToUiTripConverter
-import com.naim.starwars.ui.model.UITripListItemModel
+import com.naim.starwars.domain.converter.TripNetworkListToUiTripListConverter
+import com.naim.starwars.ui.model.ViewTripListItemModel
 import io.reactivex.Observable
 
 /**
@@ -12,9 +12,9 @@ import io.reactivex.Observable
  * @version $Id$
  */
 class GetTripListUseCase(private val dataRepository: DataRepository,
-                         private val tripNetworkToUiTripConverter: TripNetworkToUiTripConverter) {
+                         private val tripNetworkListToUiTripListConverter: TripNetworkListToUiTripListConverter) {
 
-    fun execute(): Observable<List<UITripListItemModel>> =
+    fun execute(): Observable<List<ViewTripListItemModel>> =
             dataRepository.getTripList()
-                    .map { tripNetworkToUiTripConverter.convert(it) }
+                    .map { tripNetworkListToUiTripListConverter.convert(it) }
 }

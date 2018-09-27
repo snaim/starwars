@@ -1,8 +1,11 @@
 package com.naim.starwars.ui.tripdetail
 
-import com.naim.starwars.domain.interactor.GetTripListUseCase
+import android.util.Log
+import com.naim.starwars.domain.interactor.GetATripUseCase
 import com.naim.starwars.ui.Navigator
 import com.naim.starwars.ui.mvpekino.MvpPresenter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * TripDetailPresenter -
@@ -11,7 +14,8 @@ import com.naim.starwars.ui.mvpekino.MvpPresenter
  * @version $Id$
  */
 class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
-                          private val getTripListUseCase: GetTripListUseCase)
+                          private val getATripUseCase: GetATripUseCase,
+                          private val tripId: Int)
     : MvpPresenter<Navigator, TripDetailContract.View>(view, navigator),
         TripDetailContract.Presenter {
 
@@ -21,12 +25,12 @@ class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
 
     override fun resume() {
         super.resume()
-        loadList()
+        loadTrip()
     }
 
-    private fun loadList() {
-        /*view.setLoadingState(true)
-        val disposable = getTripListUseCase.execute()
+    private fun loadTrip() {
+        view.setLoadingState(true)
+        val disposable = getATripUseCase.execute(tripId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -35,9 +39,9 @@ class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
                 }, {
                     Log.e(TAG, it.message)
                     view.setLoadingState(false)
-                    view.showError("An error occured while loading your music") // TODO : string
+                    view.showError("An error occured while loading the trip") // TODO : string
                 })
-        addToAutoDisposeList(disposable)*/
+        addToAutoDisposeList(disposable)
     }
 
 }
