@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v4.app.FragmentManager
 import com.naim.starwars.ui.triplist.TripListFragment
 import com.naim.starwars.ui.mvpekino.FragmentNavigator
+import com.naim.starwars.ui.tripdetail.TripDetailFragment
 
 /**
  * AppFragmentNavigator -
@@ -17,10 +18,15 @@ class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, c
     override val TAG = "starwars.navigator"
 
     override fun displayOrRestoreScreenOnActivityCreate(isAppInitialized: Boolean) {
-        displayMusicList()
+        displayTripList()
     }
 
-    override fun displayMusicList() {
+    override fun displayTripList() {
         displayAndSetRootFragment(TripListFragment.newInstance())
     }
+
+    override fun displayTripDetail() {
+        displayAndSetRootFragment(TripDetailFragment.newInstance())
+    }
+
 }

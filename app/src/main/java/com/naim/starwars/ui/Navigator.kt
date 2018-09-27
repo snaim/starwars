@@ -7,5 +7,6 @@ package com.naim.starwars.ui
  * @version $Id$
  */
 interface Navigator {
-    fun displayMusicList()
+    fun displayTripList()
+    fun displayTripDetail()
 }

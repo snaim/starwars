@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.ui_trip_item.view.pilot
 import kotlinx.android.synthetic.main.ui_trip_item.view.pilot_avatar
 
 /**
- * ItemPhoneModel -
+ * ItemTripModel -
  *
  * @author naim
  * @version $Id$

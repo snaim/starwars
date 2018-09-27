@@ -1,25 +1,22 @@
-package com.naim.starwars.ui.triplist
+package com.naim.starwars.ui.tripdetail
 
-import android.util.Log
 import com.naim.starwars.domain.interactor.GetTripListUseCase
 import com.naim.starwars.ui.Navigator
 import com.naim.starwars.ui.mvpekino.MvpPresenter
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 /**
- * TripListPresenter -
+ * TripDetailPresenter -
  *
  * @author naim
  * @version $Id$
  */
-class TripListPresenter(view: TripListContract.View, navigator: Navigator,
-                        private val getTripListUseCase: GetTripListUseCase)
-    : MvpPresenter<Navigator, TripListContract.View>(view, navigator),
-        TripListContract.Presenter {
+class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
+                          private val getTripListUseCase: GetTripListUseCase)
+    : MvpPresenter<Navigator, TripDetailContract.View>(view, navigator),
+        TripDetailContract.Presenter {
 
     companion object {
-        private val TAG = TripListPresenter::class.java.simpleName
+        private val TAG = TripDetailPresenter::class.java.simpleName
     }
 
     override fun resume() {
@@ -28,7 +25,7 @@ class TripListPresenter(view: TripListContract.View, navigator: Navigator,
     }
 
     private fun loadList() {
-        view.setLoadingState(true)
+        /*view.setLoadingState(true)
         val disposable = getTripListUseCase.execute()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -38,12 +35,9 @@ class TripListPresenter(view: TripListContract.View, navigator: Navigator,
                 }, {
                     Log.e(TAG, it.message)
                     view.setLoadingState(false)
-                    view.showError("An error occured while loading the trip list") // TODO : string
+                    view.showError("An error occured while loading your music") // TODO : string
                 })
-        addToAutoDisposeList(disposable)
+        addToAutoDisposeList(disposable)*/
     }
 
-    override fun onRefresh() {
-        loadList()
-    }
 }

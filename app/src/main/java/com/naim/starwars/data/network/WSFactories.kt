@@ -21,6 +21,11 @@ fun buildStarwarsHttpClient(): OkHttpClient {
                 else
                     HttpLoggingInterceptor.Level.NONE
             })
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                        .addHeader("Accept", "Application/JSON").build()
+                chain.proceed(request)
+            }
             .build()
 }
 
