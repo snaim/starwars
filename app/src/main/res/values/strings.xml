@@ -8,7 +8,10 @@
     <string name="arrow">arrow</string>
     <string name="departure">Departure</string>
     <string name="arrival">Arrival</string>
-    <string name="trip_distance">Trip Distance</string>
-    <string name="trip_duration">Trip Duration</string>
+    <string name="distance">Trip Distance</string>
+    <string name="duration">Trip Duration</string>
+    <string name="pilot_rating">Pilot Rating</string>
+    <string name="no_rating">user didn’t rate yet</string>
+    <string name="distance_value">%1$s %2$s</string>
 
 </resources>

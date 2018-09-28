@@ -1,6 +1,8 @@
 package com.naim.starwars.ui.tripdetail
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.github.salomonbrys.kodein.Kodein
@@ -17,9 +19,17 @@ import kotlinx.android.synthetic.main.fragment_trip_detail.arrival_time
 import kotlinx.android.synthetic.main.fragment_trip_detail.departure
 import kotlinx.android.synthetic.main.fragment_trip_detail.departure_time
 import kotlinx.android.synthetic.main.fragment_trip_detail.detail_pilot_name
+import kotlinx.android.synthetic.main.fragment_trip_detail.distance
+import kotlinx.android.synthetic.main.fragment_trip_detail.duration
 import kotlinx.android.synthetic.main.fragment_trip_detail.pilot_avatar
-import kotlinx.android.synthetic.main.fragment_trip_detail.trip_distance
-import kotlinx.android.synthetic.main.fragment_trip_detail.trip_duration
+import kotlinx.android.synthetic.main.fragment_trip_detail.rating_empty
+import kotlinx.android.synthetic.main.fragment_trip_detail.star_1
+import kotlinx.android.synthetic.main.fragment_trip_detail.star_2
+import kotlinx.android.synthetic.main.fragment_trip_detail.star_3
+import kotlinx.android.synthetic.main.fragment_trip_detail.star_4
+import kotlinx.android.synthetic.main.fragment_trip_detail.star_5
+import java.text.DecimalFormat
+import java.text.SimpleDateFormat
 
 /**
  * TripDetailFragment -
@@ -52,15 +62,46 @@ class TripDetailFragment
 
     override fun setData(trip: ViewTripDetailModel) {
         detail_pilot_name.text = trip.pilotName
+
+        val formatStringToDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val formatDateToDisplayTime = SimpleDateFormat("h:mm a")
+
+        // Departure
         departure.text = trip.pickupName
+        val pickupDate = formatStringToDate.parse(trip.pickupTime)
+        val pickupHour = formatDateToDisplayTime.format(pickupDate)
+        departure_time.text = pickupHour
+
+        // Arrival
         arrival.text = trip.dropoffName
+        val dropoffDate = formatStringToDate.parse(trip.dropoffTime)
+        val dropoffHour = formatDateToDisplayTime.format(dropoffDate)
+        arrival_time.text = dropoffHour
 
-        departure_time.text = trip.pickupTime // TODO
-        arrival_time.text = trip.dropoffTime // TODO
+        // Distance
+        val formatter = DecimalFormat("#,###,###") // TODO : trouver autre chose
+        val formattedDistance = formatter.format(trip.distance)
+        distance.text = resources.getString(R.string.distance_value, formattedDistance, trip.distanceUnit)
 
-        trip_distance.text = trip.distance.toString() + trip.distanceUnit // TODO
+        // Duration
+        val formatterDuration = SimpleDateFormat("h:mm:ss")
+        val diff = dropoffDate.time - pickupDate.time
+        duration.text = formatterDuration.format(diff)
 
-        trip_duration.text = trip.duration // TODO
+        // Rating
+        val ratingRounded = Math.round(trip.rating)
+        if (ratingRounded < 1) {
+            rating_empty.visibility = View.VISIBLE
+        }
+        // TODO set star1,2,3,4,5 avec id ressource
+
+        if (ratingRounded == 4) {
+            star_1.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
+            star_2.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
+            star_3.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
+            star_4.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
+            star_5.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_empty))
+        }
 
         Glide.with(requireContext())
                 // TODO

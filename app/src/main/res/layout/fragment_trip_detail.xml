@@ -156,9 +156,9 @@
         app:layout_constraintTop_toBottomOf="@id/arrival"
         tools:text="7:35 PM" />
 
-    <!-- TRIP DISTANCE -->
+    <!-- DISTANCE -->
     <TextView
-        android:id="@+id/trip_distance_title"
+        android:id="@+id/distance_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -166,7 +166,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="2sp"
-        android:text="@string/trip_distance"
+        android:text="@string/distance"
         android:textColor="#818181"
         android:textSize="14sp"
         android:textStyle="normal"
@@ -175,7 +175,7 @@
         app:layout_constraintTop_toBottomOf="@id/departure_time" />
 
     <TextView
-        android:id="@+id/trip_distance"
+        android:id="@+id/distance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -183,17 +183,18 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.19"
+        android:textAllCaps="true"
         android:textColor="#ffffff"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/trip_distance_title"
+        app:layout_constraintTop_toBottomOf="@id/distance_title"
         tools:text="2,478,572 KM" />
 
-    <!-- TRIP DURATION -->
+    <!-- DURATION -->
     <TextView
-        android:id="@+id/trip_duration_title"
+        android:id="@+id/duration_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -201,7 +202,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="2sp"
-        android:text="@string/trip_duration"
+        android:text="@string/duration"
         android:textColor="#818181"
         android:textSize="14sp"
         android:textStyle="normal"
@@ -210,7 +211,7 @@
         app:layout_constraintTop_toBottomOf="@id/arrival_time" />
 
     <TextView
-        android:id="@+id/trip_duration"
+        android:id="@+id/duration"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -223,8 +224,95 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/trip_duration_title"
+        app:layout_constraintTop_toBottomOf="@id/duration_title"
         tools:text="5:23:47" />
 
+    <!-- Rating -->
+
+    <TextView
+        android:id="@+id/rating_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="2sp"
+        android:text="@string/pilot_rating"
+        android:textColor="#818181"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distance" />
+
+    <TextView
+        android:id="@+id/rating_empty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.21"
+        android:text="@string/no_rating"
+        android:textAllCaps="true"
+        android:textColor="#818181"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rating_title" />
+
+    <ImageView
+        android:id="@+id/star_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/star_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rating_title" />
+
+    <ImageView
+        android:id="@+id/star_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/star_3"
+        app:layout_constraintStart_toEndOf="@id/star_1"
+        app:layout_constraintTop_toBottomOf="@id/rating_title"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageView
+        android:id="@+id/star_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/star_4"
+        app:layout_constraintStart_toEndOf="@id/star_2"
+        app:layout_constraintTop_toBottomOf="@id/rating_title"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageView
+        android:id="@+id/star_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/star_5"
+        app:layout_constraintStart_toEndOf="@id/star_3"
+        app:layout_constraintTop_toBottomOf="@id/rating_title"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageView
+        android:id="@+id/star_5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/star_4"
+        app:layout_constraintTop_toBottomOf="@id/rating_title"
+        app:layout_constraintVertical_chainStyle="packed" />
 
 </android.support.constraint.ConstraintLayout>
