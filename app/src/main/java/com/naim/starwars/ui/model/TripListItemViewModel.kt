@@ -1,16 +1,15 @@
 package com.naim.starwars.ui.model
 
 /**
- * ViewTripListItemModel -
+ * TripListItemViewModel -
  *
  * @author naim
  * @version $Id$
  */
-data class ViewTripListItemModel(
+data class TripListItemViewModel(
         val id: Int,
         val pilotName: String,
         val pilotAvatar: String,
         val pickupName: String,
         val dropoffName: String
-        /*, val rating : int*/ // TODO
 )

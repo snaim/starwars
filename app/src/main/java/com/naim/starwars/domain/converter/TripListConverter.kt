@@ -1,21 +1,21 @@
 package com.naim.starwars.domain.converter
 
 import com.naim.starwars.data.model.TripModel
-import com.naim.starwars.ui.model.ViewTripListItemModel
+import com.naim.starwars.ui.model.TripListItemViewModel
 
 /**
- * TripNetworkListToUiTripListConverter -
+ * TripListConverter -
  *
  * @author naim
  * @version $Id$
  */
-class TripNetworkListToUiTripListConverter {
+class TripListConverter {
 
-    fun convert(tripList: List<TripModel>): List<ViewTripListItemModel> {
-        val uiTripList = mutableListOf<ViewTripListItemModel>()
+    fun convert(tripList: List<TripModel>): List<TripListItemViewModel> {
+        val domainTripList = mutableListOf<TripListItemViewModel>()
         tripList.forEach {
-            uiTripList.add(
-                    ViewTripListItemModel(
+            domainTripList.add(
+                    TripListItemViewModel(
                             id = it.id,
                             pilotName = it.pilot.name,
                             pilotAvatar = it.pilot.avatar,
@@ -24,6 +24,6 @@ class TripNetworkListToUiTripListConverter {
                     )
             )
         }
-        return uiTripList
+        return domainTripList
     }
 }

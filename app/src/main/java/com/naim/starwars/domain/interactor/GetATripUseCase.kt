@@ -1,7 +1,7 @@
 package com.naim.starwars.domain.interactor
 
 import com.naim.starwars.domain.DataRepository
-import com.naim.starwars.domain.converter.TripNetworkItemToUiTripItemConverter
+import com.naim.starwars.domain.converter.TripDetailConverter
 import com.naim.starwars.domain.model.TripDetailModel
 import io.reactivex.Single
 
@@ -13,9 +13,9 @@ import io.reactivex.Single
  */
 class GetATripUseCase(
         private val dataRepository: DataRepository,
-        private val tripNetworkItemToUiTripItemConverter: TripNetworkItemToUiTripItemConverter) {
+        private val tripDetailConverter: TripDetailConverter) {
 
     fun execute(id: Int): Single<TripDetailModel> =
             dataRepository.getATrip(id)
-                    .map { tripNetworkItemToUiTripItemConverter.convert(it) }
+                    .map { tripDetailConverter.convert(it) }
 }

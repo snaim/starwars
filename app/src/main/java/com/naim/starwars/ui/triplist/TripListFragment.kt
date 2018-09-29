@@ -9,7 +9,7 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.naim.starwars.MainActivity
 import com.naim.starwars.R
-import com.naim.starwars.ui.model.ViewTripListItemModel
+import com.naim.starwars.ui.model.TripListItemViewModel
 import com.naim.starwars.ui.mvpekino.MvpKodeinFragment
 import kotlinx.android.synthetic.main.fragment_trip_list.empty_state
 import kotlinx.android.synthetic.main.fragment_trip_list.swipe_refresh
@@ -49,7 +49,7 @@ class TripListFragment
         }
     }
 
-    override fun setData(data: List<ViewTripListItemModel>) {
+    override fun setData(data: List<TripListItemViewModel>) {
         setEmptyState(data.isEmpty())
         if (!data.isEmpty()) {
             controller.setData(data)

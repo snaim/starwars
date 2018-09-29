@@ -7,12 +7,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * TripNetworkListToUiTripListConverter -
+ * TripListConverter -
  *
  * @author naim
  * @version $Id$
  */
-class TripNetworkItemToUiTripItemConverter {
+class TripDetailConverter {
 
     fun convert(tripNetwork: TripModel): TripDetailModel {
         val pickupDate = convertToDate(tripNetwork.pick_up.date)
