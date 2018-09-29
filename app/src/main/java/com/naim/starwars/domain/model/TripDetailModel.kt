@@ -1,21 +1,23 @@
-package com.naim.starwars.ui.model
+package com.naim.starwars.domain.model
+
+import java.util.Date
 
 /**
- * ViewTripDetailModel -
+ * TripDetailModel -
  *
  * @author naim
  * @version $Id$
  */
-data class ViewTripDetailModel(
+data class TripDetailModel(
         val id: Int,
         val pilotName: String,
         val pilotAvatar: String,
         val pickupName: String,
         val dropoffName: String,
-        val pickupTime: String, // TODO ?
-        val dropoffTime: String, // TODO ?
+        val pickupDate: Date,
+        val dropoffDate: Date,
         val distance: Long,
         val distanceUnit: String,
-        val duration: String, // TODO
+        val duration: Long,
         val rating: Float
 )

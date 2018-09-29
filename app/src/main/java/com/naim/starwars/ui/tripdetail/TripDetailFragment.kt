@@ -12,7 +12,7 @@ import com.github.salomonbrys.kodein.kodein
 import com.github.salomonbrys.kodein.with
 import com.naim.starwars.MainActivity
 import com.naim.starwars.R
-import com.naim.starwars.ui.model.ViewTripDetailModel
+import com.naim.starwars.ui.model.TripDetailViewModel
 import com.naim.starwars.ui.mvpekino.MvpKodeinFragment
 import kotlinx.android.synthetic.main.fragment_trip_detail.arrival
 import kotlinx.android.synthetic.main.fragment_trip_detail.arrival_time
@@ -28,8 +28,6 @@ import kotlinx.android.synthetic.main.fragment_trip_detail.star_2
 import kotlinx.android.synthetic.main.fragment_trip_detail.star_3
 import kotlinx.android.synthetic.main.fragment_trip_detail.star_4
 import kotlinx.android.synthetic.main.fragment_trip_detail.star_5
-import java.text.DecimalFormat
-import java.text.SimpleDateFormat
 
 /**
  * TripDetailFragment -
@@ -60,53 +58,38 @@ class TripDetailFragment
         }
     }
 
-    override fun setData(trip: ViewTripDetailModel) {
+    override fun setData(trip: TripDetailViewModel) {
+        // Pilot
         detail_pilot_name.text = trip.pilotName
-
-        val formatStringToDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        val formatDateToDisplayTime = SimpleDateFormat("h:mm a")
+        Glide.with(requireContext())
+                .load(trip.pilotAvatar)
+                .into(pilot_avatar)
 
         // Departure
-        departure.text = trip.pickupName
-        val pickupDate = formatStringToDate.parse(trip.pickupTime)
-        val pickupHour = formatDateToDisplayTime.format(pickupDate)
-        departure_time.text = pickupHour
+        departure.text = trip.departureName
+        departure_time.text = trip.departureTime
 
         // Arrival
-        arrival.text = trip.dropoffName
-        val dropoffDate = formatStringToDate.parse(trip.dropoffTime)
-        val dropoffHour = formatDateToDisplayTime.format(dropoffDate)
-        arrival_time.text = dropoffHour
+        arrival.text = trip.arrivalName
+        arrival_time.text = trip.arrivalTime
 
         // Distance
-        val formatter = DecimalFormat("#,###,###") // TODO : trouver autre chose
-        val formattedDistance = formatter.format(trip.distance)
-        distance.text = resources.getString(R.string.distance_value, formattedDistance, trip.distanceUnit)
+        distance.text = resources.getString(
+                R.string.distance_value, trip.distanceValue, trip.distanceUnit)
 
         // Duration
-        val formatterDuration = SimpleDateFormat("h:mm:ss")
-        val diff = dropoffDate.time - pickupDate.time
-        duration.text = formatterDuration.format(diff)
+        duration.text = trip.duration
 
         // Rating
-        val ratingRounded = Math.round(trip.rating)
-        if (ratingRounded < 1) {
+        if (trip.rating < 1) {
             rating_empty.visibility = View.VISIBLE
+        } else {
+            star_1.setImageDrawable(ContextCompat.getDrawable(requireContext(), trip.starListResId[0]))
+            star_2.setImageDrawable(ContextCompat.getDrawable(requireContext(), trip.starListResId[1]))
+            star_3.setImageDrawable(ContextCompat.getDrawable(requireContext(), trip.starListResId[2]))
+            star_4.setImageDrawable(ContextCompat.getDrawable(requireContext(), trip.starListResId[3]))
+            star_5.setImageDrawable(ContextCompat.getDrawable(requireContext(), trip.starListResId[4]))
         }
-        // TODO set star1,2,3,4,5 avec id ressource
-
-        if (ratingRounded == 4) {
-            star_1.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
-            star_2.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
-            star_3.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
-            star_4.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_filled))
-            star_5.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.star_empty))
-        }
-
-        Glide.with(requireContext())
-                // TODO
-                .load(resources.getString(R.string.base_url) + trip.pilotAvatar)
-                .into(pilot_avatar)
     }
 
 

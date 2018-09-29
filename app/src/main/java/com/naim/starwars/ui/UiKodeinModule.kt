@@ -5,6 +5,8 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.factory
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
+import com.github.salomonbrys.kodein.singleton
+import com.naim.starwars.ui.mapper.TripDetailMapper
 import com.naim.starwars.ui.tripdetail.TripDetailContract
 import com.naim.starwars.ui.tripdetail.TripDetailPresenter
 import com.naim.starwars.ui.triplist.TripListContract
@@ -22,8 +24,10 @@ val uiKodeinModule = Kodein.Module {
             provider { TripListPresenter(instance(), instance(), instance()) }
 
     bind<TripDetailContract.Presenter>() with factory { tripId: Int ->
-        TripDetailPresenter(instance(), instance(), instance(), tripId)
+        TripDetailPresenter(instance(), instance(), instance(), instance(), tripId)
     }
+
+    bind<TripDetailMapper>() with singleton { TripDetailMapper() }
 
 }
 

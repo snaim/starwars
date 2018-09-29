@@ -3,6 +3,7 @@ package com.naim.starwars.ui.tripdetail
 import android.util.Log
 import com.naim.starwars.domain.interactor.GetATripUseCase
 import com.naim.starwars.ui.Navigator
+import com.naim.starwars.ui.mapper.TripDetailMapper
 import com.naim.starwars.ui.mvpekino.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,6 +16,7 @@ import io.reactivex.schedulers.Schedulers
  */
 class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
                           private val getATripUseCase: GetATripUseCase,
+                          private val tripDetailMapper: TripDetailMapper,
                           private val tripId: Int)
     : MvpPresenter<Navigator, TripDetailContract.View>(view, navigator),
         TripDetailContract.Presenter {
@@ -33,6 +35,7 @@ class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
         val disposable = getATripUseCase.execute(tripId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map { tripDetailMapper.transform(it) }
                 .subscribe({
                     view.setData(it)
                     view.setLoadingState(false)
