@@ -114,13 +114,9 @@ abstract class FragmentNavigator(protected val context: Context,
                 .commit()
     }
 
-    protected fun addToBackStackWithSlideAnimation(newFragment: AbstractMvpFragment<*>) {
+    protected fun addToBackStackWithoutAnimation(newFragment: AbstractMvpFragment<*>) {
         fragmentManager
                 .beginTransaction()
-                .setCustomAnimations(R.anim.enter_from_right,
-                        R.anim.exit_to_left,
-                        R.anim.enter_from_left,
-                        R.anim.exit_to_right)
                 .replace(containerViewId, newFragment, newFragment.fragmentTag)
                 .addToBackStack(newFragment.fragmentTag)
                 .commit()
