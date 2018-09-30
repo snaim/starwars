@@ -13,9 +13,9 @@
 
         <ImageView
             android:id="@+id/pilot_avatar"
-            android:layout_width="@dimen/avatar_size"
-            android:layout_height="@dimen/avatar_size"
-            android:layout_margin="16dp"
+            android:layout_width="@dimen/avatar_list_size"
+            android:layout_height="@dimen/avatar_list_size"
+            android:layout_margin="@dimen/margin_medium"
             android:contentDescription="@string/pilot_avatar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,17 +23,10 @@
 
         <TextView
             android:id="@+id/pilot"
+            style="@style/PilotNameMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif"
-            android:letterSpacing="0.19"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/pickup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/pilot_avatar"
             app:layout_constraintTop_toTopOf="@id/pilot_avatar"
@@ -43,12 +36,13 @@
             android:id="@+id/pickup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_large"
             android:lineSpacingExtra="2sp"
-            android:textColor="#818181"
-            android:textSize="14sp"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_medium"
             app:layout_constraintBottom_toBottomOf="@id/pilot_avatar"
+            app:layout_constraintEnd_toStartOf="@drawable/arrow"
             app:layout_constraintStart_toEndOf="@id/pilot_avatar"
             app:layout_constraintTop_toBottomOf="@id/pilot"
             tools:text="Yavin 4" />
@@ -58,10 +52,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/arrow"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium"
             android:src="@drawable/arrow"
             app:layout_constraintBottom_toBottomOf="@id/pilot_avatar"
+            app:layout_constraintEnd_toStartOf="@id/dropoff"
             app:layout_constraintStart_toEndOf="@id/pickup"
             app:layout_constraintTop_toBottomOf="@id/pilot" />
 
@@ -70,8 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="2sp"
-            android:textColor="#818181"
-            android:textSize="14sp"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_medium"
             app:layout_constraintBottom_toBottomOf="@id/pilot_avatar"
             app:layout_constraintStart_toEndOf="@id/arrow"
             app:layout_constraintTop_toBottomOf="@id/pilot"
@@ -80,12 +75,12 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="16dp"
-            android:background="#40ffffff"
-            app:layout_constraintTop_toBottomOf="@id/pilot_avatar"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:background="@color/separator"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/pilot_avatar" />
 
     </android.support.constraint.ConstraintLayout>
 
