@@ -16,9 +16,10 @@ import kotlinx.android.synthetic.main.ui_trip_item.view.pilot_avatar
  * @author naim
  * @version $Id$
  */
-class ItemTripModel(private val trip: TripListItemViewModel,
-                    private val clickListener: OnClickListener)
-    : EpoxyModel<CardView>() {
+class ItemTripModel(
+        private val trip: TripListItemViewModel,
+        private val clickListener: OnClickListener
+) : EpoxyModel<CardView>() {
 
     override fun getDefaultLayout(): Int {
         return R.layout.ui_trip_item

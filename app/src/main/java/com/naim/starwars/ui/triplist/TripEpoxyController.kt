@@ -10,8 +10,8 @@ import com.naim.starwars.ui.model.TripListItemViewModel
  * @version $Id$
  */
 
-class TripEpoxyController(private val listener: ItemTripModel.OnClickListener)
-    : TypedEpoxyController<List<TripListItemViewModel>>() {
+class TripEpoxyController(private val listener: ItemTripModel.OnClickListener) :
+        TypedEpoxyController<List<TripListItemViewModel>>() {
 
     override fun buildModels(tripList: List<TripListItemViewModel>) {
 

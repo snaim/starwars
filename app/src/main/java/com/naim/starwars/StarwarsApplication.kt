@@ -34,11 +34,13 @@ class StarwarsApplication : Application(), KodeinAware {
         * AppFragmentNavigator is bound to the Activity scope because it needs to be rebuilt every time the Activity is recreated,
         * because it depends on the Activity FragmentManager and Context
         * */
-        bind<AppFragmentNavigator>() with scopedSingleton(androidActivityScope) { AppFragmentNavigator(instance(), instance(), instance("FRAGMENT_CONTAINER_ID")) }
+        bind<AppFragmentNavigator>() with scopedSingleton(androidActivityScope) {
+            AppFragmentNavigator(instance(), instance(), instance("FRAGMENT_CONTAINER_ID")) }
 
         /* Will bind the Navigator interface to the same AppFragmentNavigator instance as above,
          * because of singleton keyword. with(instance<Activity>()) is needed because of the Activity Scope
         */
-        bind<Navigator>() with provider { with(instance<Activity>()).instance<AppFragmentNavigator>() }
+        bind<Navigator>() with provider {
+            with(instance<Activity>()).instance<AppFragmentNavigator>() }
     }
 }

@@ -2,9 +2,9 @@ package com.naim.starwars.ui
 
 import android.content.Context
 import android.support.v4.app.FragmentManager
-import com.naim.starwars.ui.triplist.TripListFragment
 import com.naim.starwars.ui.mvpekino.FragmentNavigator
 import com.naim.starwars.ui.tripdetail.TripDetailFragment
+import com.naim.starwars.ui.triplist.TripListFragment
 
 /**
  * AppFragmentNavigator -
@@ -12,8 +12,12 @@ import com.naim.starwars.ui.tripdetail.TripDetailFragment
  * @author naim
  * @version $Id$
  */
-class AppFragmentNavigator(context: Context, fragmentManager: FragmentManager, containerViewId: Int)
-    : FragmentNavigator(context, fragmentManager, containerViewId), Navigator {
+class AppFragmentNavigator(
+        context: Context,
+        fragmentManager: FragmentManager,
+        containerViewId: Int
+) : FragmentNavigator(context, fragmentManager, containerViewId),
+        Navigator {
 
     override val TAG = "starwars.navigator"
 

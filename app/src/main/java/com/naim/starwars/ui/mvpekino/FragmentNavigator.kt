@@ -6,7 +6,6 @@ package com.naim.starwars.ui.mvpekino
 import android.content.Context
 import android.support.v4.app.FragmentManager
 import android.util.Log
-import com.naim.starwars.R
 
 /**
  * FragmentNavigator -

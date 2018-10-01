@@ -18,7 +18,7 @@ interface TripListContract {
         fun setLoadingState(isLoading: Boolean)
     }
 
-    interface Presenter : BasePresenter{
+    interface Presenter : BasePresenter {
         fun onRefresh()
         fun onClickOnPhone(id: Int)
     }

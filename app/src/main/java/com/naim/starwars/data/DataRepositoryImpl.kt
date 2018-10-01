@@ -15,8 +15,5 @@ import io.reactivex.Single
 class DataRepositoryImpl(private val starwarsAPI: StarwarsAPI) : DataRepository {
 
     override fun getTripList(): Observable<List<TripModel>> = starwarsAPI.getTripList()
-
     override fun getATrip(id: Int): Single<TripModel> = starwarsAPI.getATrip(id)
-
-
 }

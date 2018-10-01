@@ -11,8 +11,10 @@ import io.reactivex.Observable
  * @author naim
  * @version $Id$
  */
-class GetTripListUseCase(private val dataRepository: DataRepository,
-                         private val tripListConverter: TripListConverter) {
+class GetTripListUseCase(
+        private val dataRepository: DataRepository,
+        private val tripListConverter: TripListConverter
+) {
 
     fun execute(): Observable<List<TripListItemModel>> =
             dataRepository.getTripList()

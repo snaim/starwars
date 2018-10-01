@@ -13,7 +13,8 @@ import io.reactivex.Single
  */
 class GetATripUseCase(
         private val dataRepository: DataRepository,
-        private val tripDetailConverter: TripDetailConverter) {
+        private val tripDetailConverter: TripDetailConverter
+) {
 
     fun execute(id: Int): Single<TripDetailModel> =
             dataRepository.getATrip(id)

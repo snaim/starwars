@@ -14,11 +14,13 @@ import io.reactivex.schedulers.Schedulers
  * @author naim
  * @version $Id$
  */
-class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
-                          private val getATripUseCase: GetATripUseCase,
-                          private val tripDetailMapper: TripDetailMapper,
-                          private val tripId: Int)
-    : MvpPresenter<Navigator, TripDetailContract.View>(view, navigator),
+class TripDetailPresenter(
+        view: TripDetailContract.View,
+        navigator: Navigator,
+        private val getATripUseCase: GetATripUseCase,
+        private val tripDetailMapper: TripDetailMapper,
+        private val tripId: Int
+) : MvpPresenter<Navigator, TripDetailContract.View>(view, navigator),
         TripDetailContract.Presenter {
 
     companion object {

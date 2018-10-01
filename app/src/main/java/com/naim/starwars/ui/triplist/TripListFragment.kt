@@ -21,7 +21,8 @@ import kotlinx.android.synthetic.main.fragment_trip_list.trip_list
  * @version $Id$
  */
 class TripListFragment
-    : MvpKodeinFragment<TripListContract.Presenter>(), TripListContract.View,
+    : MvpKodeinFragment<TripListContract.Presenter>(),
+        TripListContract.View,
         ItemTripModel.OnClickListener {
 
     override val defaultLayout: Int = R.layout.fragment_trip_list

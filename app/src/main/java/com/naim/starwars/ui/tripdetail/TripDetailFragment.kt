@@ -35,8 +35,9 @@ import kotlinx.android.synthetic.main.fragment_trip_detail.star_5
  * @author naim
  * @version $Id$
  */
-class TripDetailFragment
-    : MvpKodeinFragment<TripDetailContract.Presenter>(), TripDetailContract.View {
+class TripDetailFragment :
+        MvpKodeinFragment<TripDetailContract.Presenter>(),
+        TripDetailContract.View {
 
     override val defaultLayout: Int = R.layout.fragment_trip_detail
 

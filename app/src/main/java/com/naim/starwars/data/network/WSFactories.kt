@@ -13,31 +13,29 @@ import retrofit2.converter.gson.GsonConverterFactory
  * @author naim
  * @version $Id$
  */
-fun buildStarwarsHttpClient(): OkHttpClient {
-    return OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().apply {
-                level = if (BuildConfig.DEBUG)
-                    HttpLoggingInterceptor.Level.BODY
-                else
-                    HttpLoggingInterceptor.Level.NONE
-            })
-            .addInterceptor { chain ->
-                val request = chain.request().newBuilder()
-                        .addHeader("Accept", "Application/JSON").build()
-                chain.proceed(request)
-            }
-            .build()
-}
+fun buildStarwarsHttpClient(): OkHttpClient =
+        OkHttpClient.Builder()
+                .addInterceptor(HttpLoggingInterceptor().apply {
+                    level = if (BuildConfig.DEBUG)
+                        HttpLoggingInterceptor.Level.BODY
+                    else
+                        HttpLoggingInterceptor.Level.NONE
+                })
+                .addInterceptor { chain ->
+                    val request = chain.request().newBuilder()
+                            .addHeader("Accept", "Application/JSON").build()
+                    chain.proceed(request)
+                }
+                .build()
 
-fun buildStarwarsRetrofit(httpClient: OkHttpClient): Retrofit {
-    return Retrofit.Builder()
-            .client(httpClient)
-            .baseUrl("https://starwars.chauffeur-prive.com")
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-}
 
-fun buildStarwarsApi(retrofit: Retrofit): StarwarsAPI {
-    return retrofit.create(StarwarsAPI::class.java)
-}
+fun buildStarwarsRetrofit(httpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+                .client(httpClient)
+                .baseUrl("https://starwars.chauffeur-prive.com")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+
+fun buildStarwarsApi(retrofit: Retrofit): StarwarsAPI = retrofit.create(StarwarsAPI::class.java)
