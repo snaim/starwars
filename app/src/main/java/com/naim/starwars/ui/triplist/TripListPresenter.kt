@@ -3,6 +3,7 @@ package com.naim.starwars.ui.triplist
 import android.util.Log
 import com.naim.starwars.domain.interactor.GetTripListUseCase
 import com.naim.starwars.ui.Navigator
+import com.naim.starwars.ui.mapper.TripListMapper
 import com.naim.starwars.ui.mvpekino.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -14,7 +15,8 @@ import io.reactivex.schedulers.Schedulers
  * @version $Id$
  */
 class TripListPresenter(view: TripListContract.View, navigator: Navigator,
-                        private val getTripListUseCase: GetTripListUseCase)
+                        private val getTripListUseCase: GetTripListUseCase,
+                        private val tripListMapper: TripListMapper)
     : MvpPresenter<Navigator, TripListContract.View>(view, navigator),
         TripListContract.Presenter {
 
@@ -32,13 +34,14 @@ class TripListPresenter(view: TripListContract.View, navigator: Navigator,
         val disposable = getTripListUseCase.execute()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map { tripListMapper.transform(it) }
                 .subscribe({
                     view.setData(it)
                     view.setLoadingState(false)
                 }, {
                     Log.e(TAG, it.message)
                     view.setLoadingState(false)
-                    view.showError("An error occured while loading the trip list") // TODO : string
+                    view.showError()
                 })
         addToAutoDisposeList(disposable)
     }

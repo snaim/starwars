@@ -18,16 +18,14 @@ class TripDetailConverter {
         val pickupDate = convertToDate(tripNetwork.pick_up.date)
         val dropoffDate = convertToDate(tripNetwork.drop_off.date)
 
-        // if (pickupDate == null || dropoffDate == null) { // TODO
-
         return TripDetailModel(
                 id = tripNetwork.id,
                 pilotName = tripNetwork.pilot.name,
                 pilotAvatar = tripNetwork.pilot.avatar,
                 pickupName = tripNetwork.pick_up.name,
                 dropoffName = tripNetwork.drop_off.name,
-                pickupDate = pickupDate!!, // TODO
-                dropoffDate = dropoffDate!!, // TODO
+                pickupDate = pickupDate,
+                dropoffDate = dropoffDate,
                 distance = tripNetwork.distance.value,
                 distanceUnit = tripNetwork.distance.unit,
                 duration = getDuration(pickupDate, dropoffDate),
@@ -35,19 +33,19 @@ class TripDetailConverter {
         )
     }
 
-    private fun convertToDate(dateString: String): Date? {
+    private fun convertToDate(dateString: String): Date {
         val formatStringToDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        var date = Date()
+        var date: Date
         try {
             date = formatStringToDate.parse(dateString)
         } catch (e: ParseException) {
-            // TODO
+            throw IllegalArgumentException("Date parsing failed")
         }
         return date
     }
 
     private fun getDuration(pickupDate: Date, dropoffDate: Date): Long {
-        return dropoffDate.time - pickupDate.time // TODO : si - !
+        return dropoffDate.time - pickupDate.time
     }
 
 }

@@ -1,7 +1,7 @@
 package com.naim.starwars.domain.converter
 
 import com.naim.starwars.data.model.TripModel
-import com.naim.starwars.ui.model.TripListItemViewModel
+import com.naim.starwars.domain.model.TripListItemModel
 
 /**
  * TripListConverter -
@@ -11,11 +11,11 @@ import com.naim.starwars.ui.model.TripListItemViewModel
  */
 class TripListConverter {
 
-    fun convert(tripList: List<TripModel>): List<TripListItemViewModel> {
-        val domainTripList = mutableListOf<TripListItemViewModel>()
+    fun convert(tripList: List<TripModel>): List<TripListItemModel> {
+        val domainTripList = mutableListOf<TripListItemModel>()
         tripList.forEach {
             domainTripList.add(
-                    TripListItemViewModel(
+                    TripListItemModel(
                             id = it.id,
                             pilotName = it.pilot.name,
                             pilotAvatar = it.pilot.avatar,

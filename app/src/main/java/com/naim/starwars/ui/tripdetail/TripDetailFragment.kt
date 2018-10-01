@@ -97,8 +97,10 @@ class TripDetailFragment
         }
     }
 
-    override fun showError(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    override fun showError() {
+        Toast.makeText(context,
+                resources.getString(R.string.detail_loading_error),
+                Toast.LENGTH_LONG).show()
     }
 
     override fun setLoadingState(isLoading: Boolean) {

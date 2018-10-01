@@ -13,7 +13,7 @@ import com.naim.starwars.ui.mvpekino.BaseView
 interface TripDetailContract {
 
     interface View : BaseView<Presenter> {
-        fun showError(message: String)
+        fun showError()
         fun setLoadingState(isLoading: Boolean)
         fun setData(trip: TripDetailViewModel)
     }

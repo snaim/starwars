@@ -15,4 +15,7 @@
     <string name="no_rating">user didn’t rate yet</string>
     <string name="distance_value">%1$s %2$s</string>
 
+    <string name="list_loading_error">An error occurred while loading the trip list</string>
+    <string name="detail_loading_error">An error occurred while loading the trip</string>
+
 </resources>

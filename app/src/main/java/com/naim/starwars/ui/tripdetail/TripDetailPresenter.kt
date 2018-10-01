@@ -42,7 +42,7 @@ class TripDetailPresenter(view: TripDetailContract.View, navigator: Navigator,
                 }, {
                     Log.e(TAG, it.message)
                     view.setLoadingState(false)
-                    view.showError("An error occured while loading the trip") // TODO : string
+                    view.showError()
                 })
         addToAutoDisposeList(disposable)
     }

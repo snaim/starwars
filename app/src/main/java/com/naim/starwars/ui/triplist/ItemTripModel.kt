@@ -33,8 +33,7 @@ class ItemTripModel(private val trip: TripListItemViewModel,
         view.setOnClickListener { clickListener.onClick(trip.id) }
 
         Glide.with(view.context)
-                // TODO
-                .load(view.context.resources.getString(R.string.base_url) + trip.pilotAvatar)
+                .load(trip.pilotAvatar)
                 .into(view.pilot_avatar)
     }
 

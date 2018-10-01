@@ -1,12 +1,13 @@
 package com.naim.starwars.ui.mapper
 
+import android.content.Context
 import com.naim.starwars.R
 import com.naim.starwars.domain.model.TripDetailModel
 import com.naim.starwars.ui.model.TripDetailViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TripDetailMapper {
+class TripDetailMapper(private val context: Context) {
 
     fun transform(trip: TripDetailModel): TripDetailViewModel {
         val ratingRounded = getRatingRounded(trip.rating)
@@ -40,11 +41,11 @@ class TripDetailMapper {
     private fun getRatingRounded(rating: Float): Int = Math.round(rating)
 
     private fun getPilotAvatarUrl(avatar: String): String {
-        return "https://starwars.chauffeur-prive.com" + avatar// TODO : resources.getString(R.string.base_url)
+        return context.resources.getString(R.string.base_url) + avatar
     }
 
     private fun getFormattedDuration(duration: Long): String {
-        val formatterDuration = SimpleDateFormat("h:mm:ss") // TODO : si plus d'un jour
+        val formatterDuration = SimpleDateFormat("h:mm:ss")
         return formatterDuration.format(duration)
     }
 
@@ -53,7 +54,7 @@ class TripDetailMapper {
     }
 
     private fun getFormattedTime(datetime: Date): String {
-        val formatDateToDisplayTime = SimpleDateFormat("h:mm a") // TODO
+        val formatDateToDisplayTime = SimpleDateFormat("h:mm a")
         return formatDateToDisplayTime.format(datetime)
     }
 

@@ -14,7 +14,7 @@ interface TripListContract {
 
     interface View : BaseView<Presenter> {
         fun setData(data: List<TripListItemViewModel>)
-        fun showError(message: String)
+        fun showError()
         fun setLoadingState(isLoading: Boolean)
     }
 
