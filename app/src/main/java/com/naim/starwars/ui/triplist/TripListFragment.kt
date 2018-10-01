@@ -37,6 +37,11 @@ class TripListFragment
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).setTitleActionBar()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

@@ -58,6 +58,11 @@ class TripDetailFragment
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).setBackActionBar()
+    }
+
     override fun setData(trip: TripDetailViewModel) {
         // Pilot
         detail_pilot_name.text = trip.pilotName
@@ -91,7 +96,6 @@ class TripDetailFragment
             star_5.setImageDrawable(ContextCompat.getDrawable(requireContext(), trip.starListResId[4]))
         }
     }
-
 
     override fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
