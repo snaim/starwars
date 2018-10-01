@@ -28,7 +28,7 @@ class TripDetailConverter {
                 dropoffDate = dropoffDate,
                 distance = tripNetwork.distance.value,
                 distanceUnit = tripNetwork.distance.unit,
-                duration = getDuration(pickupDate, dropoffDate),
+                duration = tripNetwork.duration,
                 rating = tripNetwork.pilot.rating
         )
     }
@@ -42,10 +42,6 @@ class TripDetailConverter {
             throw IllegalArgumentException("Date parsing failed")
         }
         return date
-    }
-
-    private fun getDuration(pickupDate: Date, dropoffDate: Date): Long {
-        return dropoffDate.time - pickupDate.time
     }
 
 }
