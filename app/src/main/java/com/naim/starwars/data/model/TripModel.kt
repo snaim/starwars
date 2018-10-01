@@ -4,7 +4,7 @@ data class TripModel(
         val id: Int,
         val pilot: Pilot,
         val distance: Distance,
-        val duration: Int,
+        val duration: Long,
         val pick_up: TripStep,
         val drop_off: TripStep
 )

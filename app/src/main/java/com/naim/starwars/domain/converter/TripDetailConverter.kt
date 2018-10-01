@@ -14,38 +14,30 @@ import java.util.*
  */
 class TripDetailConverter {
 
-    fun convert(tripNetwork: TripModel): TripDetailModel {
-        val pickupDate = convertToDate(tripNetwork.pick_up.date)
-        val dropoffDate = convertToDate(tripNetwork.drop_off.date)
-
-        return TripDetailModel(
-                id = tripNetwork.id,
-                pilotName = tripNetwork.pilot.name,
-                pilotAvatar = tripNetwork.pilot.avatar,
-                pickupName = tripNetwork.pick_up.name,
-                dropoffName = tripNetwork.drop_off.name,
-                pickupDate = pickupDate,
-                dropoffDate = dropoffDate,
-                distance = tripNetwork.distance.value,
-                distanceUnit = tripNetwork.distance.unit,
-                duration = getDuration(pickupDate, dropoffDate),
-                rating = tripNetwork.pilot.rating
-        )
-    }
+    fun convert(tripNetwork: TripModel): TripDetailModel =
+            TripDetailModel(
+                    id = tripNetwork.id,
+                    pilotName = tripNetwork.pilot.name,
+                    pilotAvatar = tripNetwork.pilot.avatar,
+                    pickupName = tripNetwork.pick_up.name,
+                    dropoffName = tripNetwork.drop_off.name,
+                    pickupDate = convertToDate(tripNetwork.pick_up.date),
+                    dropoffDate = convertToDate(tripNetwork.drop_off.date),
+                    distance = tripNetwork.distance.value,
+                    distanceUnit = tripNetwork.distance.unit,
+                    duration = tripNetwork.duration,
+                    rating = tripNetwork.pilot.rating
+            )
 
     private fun convertToDate(dateString: String): Date {
         val formatStringToDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        var date: Date
+        val date: Date
         try {
             date = formatStringToDate.parse(dateString)
         } catch (e: ParseException) {
             throw IllegalArgumentException("Date parsing failed")
         }
         return date
-    }
-
-    private fun getDuration(pickupDate: Date, dropoffDate: Date): Long {
-        return dropoffDate.time - pickupDate.time
     }
 
 }
