@@ -5,7 +5,6 @@
 
     <string name="last_trip">Last Trips</string>
     <string name="pilot_avatar">Pilot avatar</string>
-    <string name="empty_state">There is no trip, sorry, try to refresh !</string>
     <string name="arrow">arrow</string>
     <string name="departure">Departure</string>
     <string name="arrival">Arrival</string>

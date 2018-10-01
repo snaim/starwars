@@ -11,7 +11,6 @@ import com.naim.starwars.MainActivity
 import com.naim.starwars.R
 import com.naim.starwars.ui.model.TripListItemViewModel
 import com.naim.starwars.ui.mvpekino.MvpKodeinFragment
-import kotlinx.android.synthetic.main.fragment_trip_list.empty_state
 import kotlinx.android.synthetic.main.fragment_trip_list.swipe_refresh
 import kotlinx.android.synthetic.main.fragment_trip_list.trip_list
 
@@ -55,10 +54,7 @@ class TripListFragment
     }
 
     override fun setData(data: List<TripListItemViewModel>) {
-        setEmptyState(data.isEmpty())
-        if (!data.isEmpty()) {
-            controller.setData(data)
-        }
+        controller.setData(data)
     }
 
     override fun showError() {
@@ -69,11 +65,6 @@ class TripListFragment
 
     override fun setLoadingState(isLoading: Boolean) {
         (activity as MainActivity).setLoadingState(isLoading)
-    }
-
-    private fun setEmptyState(isVisible: Boolean) {
-        trip_list.visibility = if (isVisible) View.GONE else View.VISIBLE
-        empty_state.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
     override fun onClick(id: Int) {
