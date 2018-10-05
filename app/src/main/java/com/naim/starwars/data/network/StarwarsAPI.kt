@@ -18,5 +18,5 @@ interface StarwarsAPI {
     fun getTripList(): Observable<List<TripModel>>
 
     @GET("trips/{id}")
-    fun getATrip(@Path("id") customerId: Int): Single<TripModel>
+    fun getATrip(@Path("id") id: Int): Single<TripModel>
 }
